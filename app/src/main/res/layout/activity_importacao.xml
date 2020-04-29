@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnImportar"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="169dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginLeft="256dp"
+        android:layout_marginTop="164dp"
+        android:background="@color/colorbtn"
+        android:text="Importar Aquivo"
+        android:textColor="@color/CorBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="559dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="24dp"
+        android:text='O Arquivo deve estar com o nome "COLETOR.TXT" na pasta "APPInventario" na memoria Interna do SmartPhone'
+        app:layout_constraintBottom_toTopOf="@+id/btnImportar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="169dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginLeft="256dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorbtn"
+        android:text="Limpar Registros"
+        android:textColor="@color/CorBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnImportar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

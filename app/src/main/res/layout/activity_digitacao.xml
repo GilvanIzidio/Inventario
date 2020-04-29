@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actDigitacao">
+
+    <Button
+        android:id="@+id/btntec8"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="468dp"
+        android:layout_marginLeft="468dp"
+        android:layout_marginTop="188dp"
+        android:text="8"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec9"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="560dp"
+        android:layout_marginLeft="560dp"
+        android:layout_marginTop="188dp"
+        android:background="@color/colorbtn"
+        android:text="9"
+        android:textColor="@color/CorBack"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec7"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="380dp"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="188dp"
+        android:text="7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec5"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="470dp"
+        android:layout_marginLeft="470dp"
+        android:layout_marginTop="109dp"
+        android:text="5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec4"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="380dp"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="109dp"
+        android:text="4"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec6"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="560dp"
+        android:layout_marginLeft="560dp"
+        android:layout_marginTop="109dp"
+        android:text="6"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec3"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="560dp"
+        android:layout_marginLeft="560dp"
+        android:layout_marginTop="30dp"
+        android:text="3"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btntec2"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="470dp"
+        android:layout_marginLeft="470dp"
+        android:layout_marginTop="30dp"
+        android:text="2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Codigo de Barras"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnScan"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="137dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorbtn"
+        android:text="Ler Produto"
+        android:textColor="@color/CorBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toEndOf="@+id/edtResultado"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="214dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="210dp"
+        android:text="TesteNomeProduto"
+        app:fontFamily="@font/archivo_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="216dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="190dp"
+        android:text="TesteQtdJaDigitado"
+        app:fontFamily="@font/archivo_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btntec1"
+        android:background="@color/colorbtn"
+        android:textColor="@color/CorBack"
+        android:layout_width="95dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="380dp"
+        android:layout_marginLeft="380dp"
+        android:layout_marginTop="30dp"
+        android:text="1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtQtd"
+        android:layout_width="116dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="110dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnprocura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="292dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
