@@ -2,6 +2,7 @@ package com.example.inventario;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
@@ -17,20 +18,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.String;
+
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class actDigitacao extends AppCompatActivity {
     Button btnScan;
     EditText edtQtd;
     Button btnprocura;
     EditText edtResultado;
+    String textNomeProduto;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digitacao);
         btnScan = (Button) findViewById(R.id.btnScan);
-        btnprocura=(Button) findViewById(R.id.btnprocura);
         edtResultado=(EditText)findViewById(R.id.edtResultado);
         final Activity activity = this;
 
@@ -44,23 +52,11 @@ public class actDigitacao extends AppCompatActivity {
                 integrator.setPrompt("Lendo Codigo");
                 integrator.setCameraId(0);
                 integrator.initiateScan();
-
             }
         });
-
-        btnprocura.setOnClickListener(new OnClickListener() {
-           String varResult = edtResultado.getText().toString();
-            @Override
-            public void onClick(View view) {
-                select_produto(varResult);
-            }
-        });
-
-
     }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult  (int requestCode, int resultCode, @Nullable Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() != null) {
@@ -72,26 +68,25 @@ public class actDigitacao extends AppCompatActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+        // Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
 
-       // Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
-        EditText edtResultado =(EditText)findViewById(R.id.edtResultado);
+        EditText edtResultado = (EditText) findViewById(R.id.edtResultado);
         edtResultado.setText(result.getContents());
+       retorno();
+        }
 
 
-    }
     private void alert(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-
-    public void select_produto(String varResult) {
+    public void retorno (){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this,"Inventario",null,1);
         SQLiteDatabase db = admin.getWritableDatabase();
-
-        admin.selectcodbar(varResult,db);
-        Toast.makeText(actDigitacao.this,"O registro é "+varResult,Toast.LENGTH_LONG).show();
+        db.rawQuery("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR= ?",new String[] {"7909189139576"});
+       String resultNomeProduto = db.toString();
+        TextView textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);
+        textNomeProduto.setText(resultNomeProduto);
     }
 
-
-
-}
+    }

@@ -3,6 +3,7 @@ package com.example.inventario;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -10,7 +11,7 @@ import static java.sql.Types.INTEGER;
 
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
-    public AdminSQLiteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory,int version){
+    public AdminSQLiteOpenHelper (@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory,int version){
       super(context,"Inventario",null,1);
     }
 
@@ -33,12 +34,14 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 public void apagarRegistros(String tabela, SQLiteDatabase db){
         db.execSQL("DELETE FROM "+tabela);
 }
-public void selectcodbar(String varResult, SQLiteDatabase db){
-        db.execSQL("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR="+varResult);
-}
 
 
 
+    /*public void pegaNomeProduto(String resultNomeProduto, SQLiteDatabase db){
+        db.execSQL("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR="+edtResultado);
+
+        TextView textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);
+        textNomeProduto.setText(resultNomeProduto);}*/
 
 
 }
