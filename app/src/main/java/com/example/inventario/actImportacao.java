@@ -19,8 +19,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import android.app.Activity;
-import android.content.DialogInterface;
 
 //import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.*;
@@ -76,7 +74,7 @@ public class actImportacao extends AppCompatActivity {
 
                     arranjo = separador.split("[|]");
 
-                    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actImportacao.this,"Inventario",null,1);
+                    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actImportacao.this);
                     SQLiteDatabase db = admin.getWritableDatabase();
                     ContentValues registro = new ContentValues();
 
@@ -111,7 +109,7 @@ public class actImportacao extends AppCompatActivity {
         }
     }
     public void limparTabela(String tabela){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actImportacao.this,"Inventario",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actImportacao.this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         admin.apagarRegistros(tabela,db);

@@ -3,17 +3,20 @@ package com.example.inventario;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import static java.sql.Types.INTEGER;
-
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
-    public AdminSQLiteOpenHelper (@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory,int version){
-      super(context,"Inventario",null,1);
+    static String codbar = "tituloaaaaa";
+
+    public AdminSQLiteOpenHelper
+            (@Nullable Context context){ super(context, "Inventario", null, 1);
+
+             //String TITULO = "titulo";
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
