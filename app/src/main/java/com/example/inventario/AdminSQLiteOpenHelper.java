@@ -1,19 +1,22 @@
 package com.example.inventario;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
-    static String codbar = "tituloaaaaa";
+
 
     public AdminSQLiteOpenHelper
             (@Nullable Context context){ super(context, "Inventario", null, 1);
 
-             //String TITULO = "titulo";
+
     }
 
 

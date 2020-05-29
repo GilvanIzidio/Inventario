@@ -17,8 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.String;
 
@@ -28,6 +27,8 @@ public class actDigitacao extends AppCompatActivity {
     Button btnprocura;
     EditText edtResultado;
     String textNomeProduto;
+    Button button777;
+
 
 
     @Override
@@ -36,6 +37,7 @@ public class actDigitacao extends AppCompatActivity {
         setContentView(R.layout.activity_digitacao);
         btnScan = (Button) findViewById(R.id.btnScan);
         edtResultado = (EditText) findViewById(R.id.edtResultado);
+        button777 = (Button)findViewById(R.id.button777);
         final Activity activity = this;
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,17 @@ public class actDigitacao extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
+        button777.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                retorno();
+            }
+        });
+
+
+
+
     }
 
     @Override
@@ -68,53 +81,36 @@ public class actDigitacao extends AppCompatActivity {
 
         EditText edtResultado = (EditText) findViewById(R.id.edtResultado);
         edtResultado.setText(result.getContents());
-        carrega_dados();
+        retorno();
 
     }
-
 
     private void alert(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    public Cursor carrega_dados() {
+
+
+
+    public void retorno(){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
         SQLiteDatabase db = admin.getWritableDatabase();
-        Cursor cursor;
-        String[] campos =  {AdminSQLiteOpenHelper.codbar};
-        cursor = db.rawQuery("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR= 7909189139576", null);
-        if (cursor != null) {
-            cursor.moveToFirst();
+
+
+
+      //  Cursor rs = (db.rawQuery("SELECT NOMEPRODUTO nome_produto  FROM PRODUTO  WHERE CODBAR= "+edtResultado",null));
+        Cursor rs = (db.rawQuery("SELECT NOMEPRODUTO nome_produto  FROM PRODUTO  WHERE CODBAR='"+edtResultado+"'",null));
+        String  resultado = "";
+        if (rs.moveToFirst()) {
+            resultado = rs.getString(rs.getColumnIndex("nome_produto"));
+        } else {
+            alert("Produto não encontrado.");
         }
-        return cursor;
+        TextView textNomeProduto = (TextView) findViewById(R.id.textNomeProduto);
+        textNomeProduto.setText(resultado);
+
 
     }
-    public class consulta extends Activity{
-        private ListView listView;
-        @Override
-        protected void onCreate(Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_digitacao);
-            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(getBaseContext());
-            Cursor cursor = carrega_dados();
-            listView = (ListView)findViewById(R.id.listView);
-            String[] nomeCampos = new String[] {AdminSQLiteOpenHelper.codbar};
-            SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(),R.layout.activity_digitacao,cursor,nomeCampos,null,0);
-            listView.setAdapter(adaptador);
-
-        }
-    }
-
-
-
-  /*  public void retorno (){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this,"Inventario",null,1);
-        SQLiteDatabase db = admin.getWritableDatabase();
-        db.rawQuery("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR= ?",new String[] {"7909189139576"});
-        String resultNomeProduto = db.toString();
-        TextView textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);
-        textNomeProduto.setText(resultNomeProduto);*/
-
 
 
 }
