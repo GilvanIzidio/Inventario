@@ -37,13 +37,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
-public void apagarRegistros(String tabela, SQLiteDatabase db){
+    public void apagarRegistros(String tabela, SQLiteDatabase db){
         db.execSQL("DELETE FROM "+tabela);
-}
+    }
 
-
-
-    /*public void pegaNomeProduto(String resultNomeProduto, SQLiteDatabase db){
+     /*public void pegaNomeProduto(String resultNomeProduto, SQLiteDatabase db){
         db.execSQL("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR="+edtResultado);
 
         TextView textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);

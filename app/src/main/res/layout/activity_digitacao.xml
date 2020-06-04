@@ -151,12 +151,12 @@
 
     <TextView
         android:id="@+id/textNomeProduto"
-        android:layout_width="173dp"
-        android:layout_height="48dp"
+        android:layout_width="284dp"
+        android:layout_height="52dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:text="TesteNomeProduto"
-        android:textSize="15sp"
+        android:textColor="@color/CorNomeProduto"
+        android:textSize="25sp"
         app:fontFamily="@font/archivo_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +183,7 @@
         android:layout_height="74dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="108dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="35sp"
@@ -191,15 +191,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button777"
+        android:id="@+id/btnupdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="200dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Colocar valor"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="210dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

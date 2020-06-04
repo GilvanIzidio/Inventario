@@ -25,9 +25,10 @@ public class actDigitacao extends AppCompatActivity {
     Button btnScan;
     EditText edtQtd;
     Button btnprocura;
+    Button btnupdate;
     EditText edtResultado;
     String textNomeProduto;
-    Button button777;
+
 
 
 
@@ -37,11 +38,26 @@ public class actDigitacao extends AppCompatActivity {
         setContentView(R.layout.activity_digitacao);
         btnScan = (Button) findViewById(R.id.btnScan);
         edtResultado = (EditText) findViewById(R.id.edtResultado);
-        button777 = (Button)findViewById(R.id.button777);
+        btnupdate = (Button)findViewById(R.id.btnupdate);
+
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adiciona_estoque();
+            }
+        });
+
         final Activity activity = this;
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(edtResultado.length()>0){
+                    retorno();
+                    return;
+                }
+                else {
+
+                }
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(integrator.QR_CODE_TYPES);
                 integrator.setDesiredBarcodeFormats(integrator.ONE_D_CODE_TYPES);
@@ -51,16 +67,6 @@ public class actDigitacao extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
-
-        button777.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                retorno();
-            }
-        });
-
-
-
 
     }
 
@@ -82,35 +88,37 @@ public class actDigitacao extends AppCompatActivity {
         EditText edtResultado = (EditText) findViewById(R.id.edtResultado);
         edtResultado.setText(result.getContents());
         retorno();
-
     }
 
     private void alert(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-
-
-
     public void retorno(){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
         SQLiteDatabase db = admin.getWritableDatabase();
-
-
-
-      //  Cursor rs = (db.rawQuery("SELECT NOMEPRODUTO nome_produto  FROM PRODUTO  WHERE CODBAR= "+edtResultado",null));
-        Cursor rs = (db.rawQuery("SELECT NOMEPRODUTO nome_produto  FROM PRODUTO  WHERE CODBAR='"+edtResultado+"'",null));
+        String ResultadoNomeProduto = ((String) edtResultado.getText().toString());
+        Cursor rs = (db.rawQuery("SELECT NOMEPRODUTO nome_produto  FROM PRODUTO  WHERE CODBAR='"+ResultadoNomeProduto+"'",null));
         String  resultado = "";
         if (rs.moveToFirst()) {
             resultado = rs.getString(rs.getColumnIndex("nome_produto"));
         } else {
-            alert("Produto não encontrado.");
+            alert("Produto não encontrado");
         }
         TextView textNomeProduto = (TextView) findViewById(R.id.textNomeProduto);
         textNomeProduto.setText(resultado);
 
-
     }
 
+    public void adiciona_estoque(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        String quantidade_estoque = ((String) edtQtd.getText().toString());
+        String codigo_de_barras = ((String) edtResultado.getText().toString());
+
+        Cursor execQuery = (db.rawQuery("UPDATE PRODUTO P SET P.CODBAR = "+quantidade_estoque+" where P.CODBAR ='"+codigo_de_barras+"'",null));
+
+    }
 
 }
