@@ -41,6 +41,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM "+tabela);
     }
 
+
+
      /*public void pegaNomeProduto(String resultNomeProduto, SQLiteDatabase db){
         db.execSQL("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR="+edtResultado);
 

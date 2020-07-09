@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 //import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,14 +21,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 
 public class actDigitacao extends AppCompatActivity {
     Button btnScan;
     EditText edtQtd;
-    Button btnprocura;
     Button btnupdate;
     EditText edtResultado;
-    String textNomeProduto;
+    List<produto> lista = new ArrayList<>();
 
 
 
@@ -39,11 +41,16 @@ public class actDigitacao extends AppCompatActivity {
         btnScan = (Button) findViewById(R.id.btnScan);
         edtResultado = (EditText) findViewById(R.id.edtResultado);
         btnupdate = (Button)findViewById(R.id.btnupdate);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
+        SQLiteDatabase db = admin.getWritableDatabase();
+
 
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adiciona_estoque();
+                testeVariavel();
+
+
             }
         });
 
@@ -110,15 +117,34 @@ public class actDigitacao extends AppCompatActivity {
 
     }
 
-    public void adiciona_estoque(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
-        SQLiteDatabase db = admin.getWritableDatabase();
+     public void salvar(){
+            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
+            SQLiteDatabase db = admin.getWritableDatabase();
 
-        String quantidade_estoque = ((String) edtQtd.getText().toString());
-        String codigo_de_barras = ((String) edtResultado.getText().toString());
+            String quantidade_estoque = ((String) edtQtd.getText().toString());
+            String codigo_de_barras = ((String) edtResultado.getText().toString());
 
-        Cursor execQuery = (db.rawQuery("UPDATE PRODUTO P SET P.CODBAR = "+quantidade_estoque+" where P.CODBAR ='"+codigo_de_barras+"'",null));
+            String sql = "";
+            sql = "UPDATE produto SET quantidade =' "+quantidade_estoque+"' WHERE codbar = '"+codigo_de_barras+"'";
+            db.beginTransaction();
+            SQLiteStatement sqLiteStatement = db.compileStatement(sql);
+            sqLiteStatement.clearBindings();
+         //   sqLiteStatement.bindString(1,quantidade_estoque);
+         //   sqLiteStatement.bindString(2,String.valueOf(codigo_de_barras));
+            sqLiteStatement.executeInsert();
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        }
 
-    }
+        public void testeVariavel(){
+            String res = edtQtd.getText().toString();
+
+            if (res != null) {
+                alert("Tem valor");
+            } else {
+                alert("Sem valor");
+            }
+
+        }
 
 }
