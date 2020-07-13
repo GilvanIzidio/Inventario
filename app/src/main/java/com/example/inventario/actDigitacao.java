@@ -1,6 +1,7 @@
 package com.example.inventario;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,9 +30,8 @@ public class actDigitacao extends AppCompatActivity {
     EditText edtQtd;
     Button btnupdate;
     EditText edtResultado;
+    TextView textNomeProduto;
     List<produto> lista = new ArrayList<>();
-
-
 
 
     @Override
@@ -40,7 +40,9 @@ public class actDigitacao extends AppCompatActivity {
         setContentView(R.layout.activity_digitacao);
         btnScan = (Button) findViewById(R.id.btnScan);
         edtResultado = (EditText) findViewById(R.id.edtResultado);
+        edtQtd = (EditText) findViewById(R.id.edtQtd);
         btnupdate = (Button)findViewById(R.id.btnupdate);
+        textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -48,7 +50,7 @@ public class actDigitacao extends AppCompatActivity {
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                testeVariavel();
+                adicionarEstoque();
 
 
             }
@@ -112,38 +114,38 @@ public class actDigitacao extends AppCompatActivity {
         } else {
             alert("Produto não encontrado");
         }
-        TextView textNomeProduto = (TextView) findViewById(R.id.textNomeProduto);
+       // TextView textNomeProduto = (TextView) findViewById(R.id.textNomeProduto);
         textNomeProduto.setText(resultado);
 
     }
 
-     public void salvar(){
+     public void adicionarEstoque(){
+        if(edtResultado.length()>0){
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(actDigitacao.this);
             SQLiteDatabase db = admin.getWritableDatabase();
-
             String quantidade_estoque = ((String) edtQtd.getText().toString());
             String codigo_de_barras = ((String) edtResultado.getText().toString());
-
             String sql = "";
-            sql = "UPDATE produto SET quantidade =' "+quantidade_estoque+"' WHERE codbar = '"+codigo_de_barras+"'";
-            db.beginTransaction();
-            SQLiteStatement sqLiteStatement = db.compileStatement(sql);
-            sqLiteStatement.clearBindings();
-         //   sqLiteStatement.bindString(1,quantidade_estoque);
-         //   sqLiteStatement.bindString(2,String.valueOf(codigo_de_barras));
-            sqLiteStatement.executeInsert();
-            db.setTransactionSuccessful();
-            db.endTransaction();
-        }
 
-        public void testeVariavel(){
-            String res = edtQtd.getText().toString();
-
-            if (res != null) {
-                alert("Tem valor");
-            } else {
-                alert("Sem valor");
-            }
+                try {
+                    sql = "UPDATE produto SET quantidade =' " + quantidade_estoque + "' WHERE codbar = '" + codigo_de_barras + "'";
+                    db.beginTransaction();
+                    SQLiteStatement sqLiteStatement = db.compileStatement(sql);
+                    sqLiteStatement.clearBindings();
+                    sqLiteStatement.executeInsert();
+                    db.setTransactionSuccessful();
+                    db.endTransaction();
+                    Toast.makeText(actDigitacao.this,"Estoque adicionado com sucesso",Toast.LENGTH_SHORT).show();
+                    edtQtd.setText("");
+                    edtResultado.setText("");
+                    edtResultado.requestFocus();
+                    textNomeProduto.setText("");
+                     }catch (Exception e) { }
+                     return;
+                 }
+                 else {
+                     Toast.makeText(actDigitacao.this,"Por favor localize o produto",Toast.LENGTH_SHORT).show();
+                 }
 
         }
 

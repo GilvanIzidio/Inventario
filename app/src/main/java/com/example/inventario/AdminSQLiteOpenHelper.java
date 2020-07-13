@@ -14,7 +14,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
 
     public AdminSQLiteOpenHelper
-            (@Nullable Context context){ super(context, "Inventario", null, 1);
+            (@Nullable Context context){ super(context, "Inventario", null, 2);
 
 
     }
@@ -27,7 +27,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE produto(" +
                 "indicador TEXT (2)," +
                 "codbar TEXT (21)," +
-                "quantidade INTEGER," +
+                "quantidade TEXT(20)," +
                 "nomeproduto TEXT (20)" +
                 ")");
     }
@@ -43,11 +43,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
 
 
-     /*public void pegaNomeProduto(String resultNomeProduto, SQLiteDatabase db){
-        db.execSQL("SELECT P.NOMEPRODUTO  FROM PRODUTO P WHERE P.CODBAR="+edtResultado);
 
-        TextView textNomeProduto = (TextView)findViewById(R.id.textNomeProduto);
-        textNomeProduto.setText(resultNomeProduto);}*/
 
 
 }

@@ -9,73 +9,80 @@
 
     <EditText
         android:id="@+id/edtResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
+        android:layout_width="311dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:ems="14"
         android:focusable="true"
+        android:gravity="center"
         android:hint="Codigo de Barras"
+        android:fontFamily="@font/segoeui"
+        android:background="@drawable/edit_custom"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textNomeProduto" />
 
     <Button
         android:id="@+id/btnScan"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="137dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="252dp"
-        android:layout_marginRight="252dp"
-        android:background="@color/colorbtn"
+        android:layout_width="309dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/borda_arredondada"
         android:text="Ler Produto"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/CorBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toEndOf="@+id/edtResultado"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtResultado" />
 
     <TextView
         android:id="@+id/textNomeProduto"
         android:layout_width="284dp"
         android:layout_height="52dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:textColor="@color/CorNomeProduto"
+        android:layout_marginStart="196dp"
+        android:layout_marginLeft="196dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/azulbotao"
         android:textSize="25sp"
         app:fontFamily="@font/archivo_black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtQtd"
-        android:layout_width="116dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginBottom="108dp"
-        android:ems="10"
+        android:layout_width="311dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:ems="14"
+        android:gravity="center"
         android:inputType="number"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:fontFamily="@font/segoeui"
+        android:textSize="33sp"
+        android:background="@drawable/edit_custom"
+        app:layout_constraintStart_toEndOf="@+id/edtResultado"
+        app:layout_constraintTop_toBottomOf="@+id/textNomeProduto" />
 
     <Button
         android:id="@+id/btnupdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="212dp"
+        android:layout_width="309dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/borda_arredondada"
         android:text="Colocar valor"
-        app:layout_constraintStart_toEndOf="@+id/edtQtd"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/CorBack"
+        app:layout_constraintStart_toEndOf="@+id/btnScan"
+        app:layout_constraintTop_toBottomOf="@+id/edtQtd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
