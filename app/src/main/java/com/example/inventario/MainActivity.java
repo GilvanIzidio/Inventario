@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         }
+             File diretorio = new File(Environment.getExternalStorageDirectory() + "/APPInventario");
+             boolean isCreate = false;
+             if (!diretorio.exists()) {
+                 isCreate = diretorio.mkdir();
+         }}
 
 
     public void entrar(View v){
@@ -45,4 +50,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(in);
     }
 
+    public void exportarInventario(View v){
+             Intent in;
+             in= new Intent(MainActivity.this, actExportacao.class);
+             startActivity(in);
+    }
 }

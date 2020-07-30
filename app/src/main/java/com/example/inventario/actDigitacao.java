@@ -8,8 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
-//import com.google.android.material.floatingactionbutton.FloatingActionButton;
-//import com.google.android.material.snackbar.Snackbar;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -126,9 +125,11 @@ public class actDigitacao extends AppCompatActivity {
             String quantidade_estoque = ((String) edtQtd.getText().toString());
             String codigo_de_barras = ((String) edtResultado.getText().toString());
             String sql = "";
-
+                        if(edtQtd.length()<1){
+                            Toast.makeText(actDigitacao.this,"Insira a quantidade do produto",Toast.LENGTH_SHORT).show();
+                        }else{
                 try {
-                    sql = "UPDATE produto SET quantidade =' " + quantidade_estoque + "' WHERE codbar = '" + codigo_de_barras + "'";
+                    sql = "UPDATE produto SET quantidade ='"+quantidade_estoque+"'WHERE codbar = '" + codigo_de_barras + "'";
                     db.beginTransaction();
                     SQLiteStatement sqLiteStatement = db.compileStatement(sql);
                     sqLiteStatement.clearBindings();
@@ -142,7 +143,7 @@ public class actDigitacao extends AppCompatActivity {
                     textNomeProduto.setText("");
                      }catch (Exception e) { }
                      return;
-                 }
+                 }}
                  else {
                      Toast.makeText(actDigitacao.this,"Por favor localize o produto",Toast.LENGTH_SHORT).show();
                  }

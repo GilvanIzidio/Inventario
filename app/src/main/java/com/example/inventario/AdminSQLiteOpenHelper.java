@@ -4,9 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
@@ -14,7 +16,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
 
     public AdminSQLiteOpenHelper
-            (@Nullable Context context){ super(context, "Inventario", null, 2);
+            (@Nullable Context context){ super(context, "Inventario", null, 1);
 
 
     }
@@ -25,11 +27,12 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE produto(" +
-                "indicador TEXT (2)," +
-                "codbar TEXT (21)," +
-                "quantidade TEXT(20)," +
-                "nomeproduto TEXT (20)" +
+                "indicador VARCHAR (2)," +
+                "codbar VARCHAR (21)," +
+                "quantidade VARCHAR(20)," +
+                "nomeproduto VARCHAR(20)" +
                 ")");
+
     }
 
     @Override
