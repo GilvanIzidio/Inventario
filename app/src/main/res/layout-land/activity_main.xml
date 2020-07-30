@@ -55,16 +55,19 @@
 
     <Button
         android:id="@+id/btnExportacao"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="309dp"
         android:layout_height="49dp"
-        android:layout_marginStart="184dp"
-        android:layout_marginLeft="184dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/borda_arredondada"
         android:fontFamily="@font/segoeui"
         android:text="EXPORTAÇÃO DO INVENTARIO"
         android:textColor="@color/CorBack"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button16"
         android:onClick="exportarInventario"/>
